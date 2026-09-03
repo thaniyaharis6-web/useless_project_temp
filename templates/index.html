@@ -1,0 +1,221 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vibe Mismatch — Aesthetic Mood Audio Lounge</title>
+  <meta name="description" content="Pick your mood. We play the exact Malayalam video audio with hilarious sarcastic commentary." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800;900&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <!-- SCREEN 1: Landing -->
+  <div id="screen-landing" class="screen active">
+    <div class="bg-grid"></div>
+    <div class="hero-content">
+      <div class="badge">🎧 Certified Audio Clinic &bull; Malayalam Edition</div>
+      <h1 class="hero-title">Select your vibe.<br /><span class="gradient-text">We have zero sympathy.</span></h1>
+      <p class="hero-sub">Select your emotion below. Our audio deck will load the audio track and deliver custom-roasted commentary directly to your screen.</p>
+
+      <div class="mood-grid" id="mood-grid" role="list">
+        <button class="mood-card" data-mood="angry" role="listitem" id="mood-angry">
+          <span class="mood-emoji">🤬</span>
+          <span class="mood-label">Angry</span>
+          <span class="mood-subtag">Boiling Point</span>
+        </button>
+        <button class="mood-card" data-mood="hyper" role="listitem" id="mood-hyper">
+          <span class="mood-emoji">⚡</span>
+          <span class="mood-label">Hyper</span>
+          <span class="mood-subtag">150% Battery</span>
+        </button>
+        <button class="mood-card" data-mood="romantic" role="listitem" id="mood-romantic">
+          <span class="mood-emoji">🥰</span>
+          <span class="mood-label">Romantic</span>
+          <span class="mood-subtag">Delusion Level 10</span>
+        </button>
+        <button class="mood-card" data-mood="sad" role="listitem" id="mood-sad">
+          <span class="mood-emoji">💔</span>
+          <span class="mood-label">Sad</span>
+          <span class="mood-subtag">Rainy Window POV</span>
+        </button>
+        <button class="mood-card" data-mood="happy" role="listitem" id="mood-happy">
+          <span class="mood-emoji">😁</span>
+          <span class="mood-label">Happy</span>
+          <span class="mood-subtag">Suspicious Joy</span>
+        </button>
+      </div>
+
+      <div class="text-input-area">
+        <p class="text-input-label">Or vent your current psychological status here&hellip;</p>
+        <div class="text-input-row">
+          <input
+            type="text"
+            id="mood-text"
+            class="mood-text-input"
+            placeholder="e.g. I am furious at my life decisions right now..."
+            maxlength="140"
+            autocomplete="off"
+          />
+          <button class="btn-diagnose" id="btn-diagnose" onclick="submitTextMood()">
+            Diagnose Me
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCREEN 2: Loading / Analysis -->
+  <div id="screen-loading" class="screen">
+    <div class="bg-grid"></div>
+    <div class="loading-content">
+      <div class="scanner-box">
+        <div class="scanner-line"></div>
+        <div class="scan-icon">🧠</div>
+      </div>
+      <h2 class="loading-title">Analyzing your mental wreckage&hellip;</h2>
+      <div class="status-list" id="status-list">
+        <div class="status-item pending" id="status-1">
+          <span class="status-dot"></span>
+          <span class="status-text">Measuring toxicity levels in blood&hellip;</span>
+        </div>
+        <div class="status-item pending" id="status-2">
+          <span class="status-dot"></span>
+          <span class="status-text">Extracting optimal audio frequencies from Malayalam archives&hellip;</span>
+        </div>
+        <div class="status-item pending" id="status-3">
+          <span class="status-dot"></span>
+          <span class="status-text">Synthesizing personalized sarcastic diagnosis&hellip;</span>
+        </div>
+      </div>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+      <p class="loading-disclaimer">*Side effects include uncontrollable smirking and mild enlightenment</p>
+    </div>
+  </div>
+
+  <!-- SCREEN 3: Result / Audio Player -->
+  <div id="screen-result" class="screen">
+    <div class="bg-grid"></div>
+    <div class="result-content" id="result-content">
+      
+      <!-- Top Bar -->
+      <div class="result-header">
+        <div class="diagnosis-badge">
+          <span class="diag-icon">📋</span>
+          <div class="diag-text">
+            <span class="diag-label">Official Medical Record</span>
+            <span class="diag-tag" id="diag-tag">Emotion: Angry &bull; Audio Prescribed</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Prescribed Sarcastic Clinical Note -->
+      <div class="prescription-card" id="prescription-card">
+        <div class="rx-header">
+          <span class="rx-symbol">&#8478;</span>
+          <span class="rx-title">Chief Medical Officer's Diagnosis</span>
+          <span class="rx-badge" id="rx-mood-badge">RAGE REPORT</span>
+        </div>
+        <p class="rx-caption" id="rx-caption">&hellip;</p>
+      </div>
+
+      <!-- Aesthetic Audio Visualizer Deck -->
+      <div class="audio-deck-card" id="audio-deck">
+        <div class="deck-top">
+          <div class="deck-indicator">
+            <span class="pulse-dot"></span>
+            <span class="status-tag" id="player-status-tag">PLAYING AUDIO</span>
+          </div>
+          <div class="vinyl-tag" id="vinyl-format-tag">MALAYALAM BEATS</div>
+        </div>
+
+        <div class="deck-body">
+          <!-- Spinning Aesthetic Vinyl Disc -->
+          <div class="vinyl-disc-wrap">
+            <div class="vinyl-disc spinning" id="vinyl-disc">
+              <div class="vinyl-groove"></div>
+              <div class="vinyl-groove inner"></div>
+              <div class="vinyl-center">
+                <span class="vinyl-emoji" id="vinyl-emoji">⚡</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Song Meta & Frequency Waveform -->
+          <div class="deck-info">
+            <div class="song-label-wrap">
+              <span class="audio-badge">NOW STREAMING AUDIO</span>
+              <h2 class="song-title" id="song-title">Audio Track</h2>
+              <p class="song-artist" id="song-artist">Malayalam Reel Archive</p>
+            </div>
+
+            <!-- Animated CSS Frequency Visualizer -->
+            <div class="visualizer-bars" id="audio-bars">
+              <span class="bar bar-1"></span>
+              <span class="bar bar-2"></span>
+              <span class="bar bar-3"></span>
+              <span class="bar bar-4"></span>
+              <span class="bar bar-5"></span>
+              <span class="bar bar-6"></span>
+              <span class="bar bar-7"></span>
+              <span class="bar bar-8"></span>
+              <span class="bar bar-9"></span>
+              <span class="bar bar-10"></span>
+              <span class="bar bar-11"></span>
+              <span class="bar bar-12"></span>
+              <span class="bar bar-13"></span>
+              <span class="bar bar-14"></span>
+              <span class="bar bar-15"></span>
+              <span class="bar bar-16"></span>
+            </div>
+
+            <!-- Play / Pause Audio Control -->
+            <div class="deck-controls">
+              <button class="audio-ctrl-btn" id="ctrl-toggle-audio" onclick="togglePlayPause()">
+                <span id="ctrl-icon">&#9646;&#9646;</span>
+                <span id="ctrl-text">Pause Audio</span>
+              </button>
+              <span class="control-note">Audio streams in background</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sarcastic Quotes Wall & Interactive Carousel -->
+      <div class="roast-wall">
+        <div class="roast-header">
+          <span class="roast-icon">&#128172;</span>
+          <span class="roast-title">Prescription Notes &amp; Observations</span>
+          <button class="btn-shuffle-roast" onclick="cycleNextRoast()">Next Sarcastic Remark &rarr;</button>
+        </div>
+        <div class="roast-card-active" id="roast-card-text">
+          &ldquo;Loading witty medical wisdom...&rdquo;
+        </div>
+        <div class="roast-chips-row" id="roast-chips-container">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+
+      <!-- Hidden Container for YouTube Audio Stream -->
+      <div class="yt-hidden-stream" aria-hidden="true">
+        <div id="yt-player-container"></div>
+      </div>
+
+      <!-- Reset CTA -->
+      <div class="restart-wrap">
+        <button class="btn-restart" id="btn-restart" onclick="restart()">
+          <span>&#8635;</span> Change Emotion
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- YouTube IFrame API -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="/static/script.js"></script>
+</body>
+</html>
