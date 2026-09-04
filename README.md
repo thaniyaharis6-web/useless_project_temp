@@ -61,32 +61,58 @@ The results screen presents the selected opposite-vibe audio track with a visual
 This result screen turns a romantic mood into a contrasting “Pranaya Kaalam Acoustic” audio experience, complete with animated waveform-style playback controls. It also adds a playful roast about overthinking romance, with options to view more diagnoses or choose a different emotion.
 
 # Diagrams
-![Workflow](Add your workflow/architecture diagram here)
-*Add caption explaining your workflow*
++-------------------------------------------------------------------------------+
+|                                USER INTERFACE                                 |
++-------------------------------------------------------------------------------+
+                                       |
+                                       | 1. Submits current mood
+                                       v
++-------------------------------------------------------------------------------+
+|                            CLIENT-SIDE LOGIC (app.js)                         |
+|                                                                               |
+|  * Reads mood input string from DOM                                           |
+|  * Displays loading state & pulsing animations                                |
+|  * Formats prompt with strict system instructions                             |
++-------------------------------------------------------------------------------+
+                                       |
+                                       | 2. POST Request (API Key + JSON payload)
+                                       v
++-------------------------------------------------------------------------------+
+|                             OPENAI API (gpt-4o-mini)                          |
+|                                                                               |
+|  * Analyzes user sentiment                                                    |
+|  * Reverses mood & selects contradictory song                                 |
+|  * Generates witty roast                                                      |
+|  * Formats response as raw JSON                                               |
++-------------------------------------------------------------------------------+
+                                       |
+                                       | 3. Returns JSON response:
+                                       |    { "roast": "...", "youtubeSearch": "..." }
+                                       v
++-------------------------------------------------------------------------------+
+|                            CLIENT-SIDE RENDERER                               |
+|                                                                               |
+|  * Extracts "roast" string and inserts into DOM `#roastText`                  |
+|  * URL-encodes `youtubeSearch` query                                          |
+|  * Dynamically creates YouTube Search Embed URL:                              |
+|    `https://www.youtube.com/embed?listType=search&list=QUERY`                  |
+|  * Injects iframe into `#playerContainer`                                     |
++-------------------------------------------------------------------------------+
+                                       |
+                                       | 4. Streams video & audio embed
+                                       v
++-------------------------------------------------------------------------------+
+|                             END USER EXPERIENCE                               |
+|                                                                               |
+|  * Reads AI roast text on screen                                              |
+|  * Listens to mood-destroying track on embedded player                        |
++-------------------------------------------------------------------------------+
 
-For Hardware:
-
-# Schematic & Circuit
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
-
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
-
-# Build Photos
-![Components](Add photo of your components here)
-*List out all components shown*
-
-![Build](Add photos of build process here)
-*Explain the build steps*
-
-![Final](Add photo of final product here)
-*Explain the final build*
 
 ### Project Demo
 # Video
-[Add your demo video link here]
-*Explain what the video demonstrates*
+(https://drive.google.com/file/d/1lOtpdbxE3WmsW00BlKY05ZUfBcMjxbZb/view?usp=sharing)
+
 
 # Additional Demos
 [Add any extra demo materials/links]
