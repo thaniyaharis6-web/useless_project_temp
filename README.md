@@ -79,7 +79,7 @@ graph TD
         D1 -->|Generates sarcastic roast| D2[Format Response as JSON]
     end
 
-    D2 -->|3. Returns JSON: {roast, youtubeSearch}| E[<b>Client-Side Renderer</b>]
+    D2 -->|3. Returns JSON response| E[<b>Client-Side Renderer</b>]
 
     subgraph DOM Updates
         E -->|Extracts roast| F[Update #roastText]
@@ -89,7 +89,6 @@ graph TD
 
     H -->|4. Streams audio/video embed| I[<b>End User Experience</b>]
 ```
-
 ### Project Demo
 # Video
 (https://drive.google.com/file/d/1lOtpdbxE3WmsW00BlKY05ZUfBcMjxbZb/view?usp=sharing)
