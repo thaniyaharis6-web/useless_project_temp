@@ -61,53 +61,34 @@ The results screen presents the selected opposite-vibe audio track with a visual
 This result screen turns a romantic mood into a contrasting “Pranaya Kaalam Acoustic” audio experience, complete with animated waveform-style playback controls. It also adds a playful roast about overthinking romance, with options to view more diagnoses or choose a different emotion.
 
 # Diagrams
-+-------------------------------------------------------------------------------+
-|                                USER INTERFACE                                 |
-+-------------------------------------------------------------------------------+
-                                       |
-                                       | 1. Submits current mood
-                                       v
-+-------------------------------------------------------------------------------+
-|                            CLIENT-SIDE LOGIC (app.js)                         |
-|                                                                               |
-|  * Reads mood input string from DOM                                           |
-|  * Displays loading state & pulsing animations                                |
-|  * Formats prompt with strict system instructions                             |
-+-------------------------------------------------------------------------------+
-                                       |
-                                       | 2. POST Request (API Key + JSON payload)
-                                       v
-+-------------------------------------------------------------------------------+
-|                             OPENAI API (gpt-4o-mini)                          |
-|                                                                               |
-|  * Analyzes user sentiment                                                    |
-|  * Reverses mood & selects contradictory song                                 |
-|  * Generates witty roast                                                      |
-|  * Formats response as raw JSON                                               |
-+-------------------------------------------------------------------------------+
-                                       |
-                                       | 3. Returns JSON response:
-                                       |    { "roast": "...", "youtubeSearch": "..." }
-                                       v
-+-------------------------------------------------------------------------------+
-|                            CLIENT-SIDE RENDERER                               |
-|                                                                               |
-|  * Extracts "roast" string and inserts into DOM `#roastText`                  |
-|  * URL-encodes `youtubeSearch` query                                          |
-|  * Dynamically creates YouTube Search Embed URL:                              |
-|    `https://www.youtube.com/embed?listType=search&list=QUERY`                  |
-|  * Injects iframe into `#playerContainer`                                     |
-+-------------------------------------------------------------------------------+
-                                       |
-                                       | 4. Streams video & audio embed
-                                       v
-+-------------------------------------------------------------------------------+
-|                             END USER EXPERIENCE                               |
-|                                                                               |
-|  * Reads AI roast text on screen                                              |
-|  * Listens to mood-destroying track on embedded player                        |
-+-------------------------------------------------------------------------------+
+## 🔄 System Architecture & Data Flow
 
+```mermaid
+graph TD
+    A[<b>User Interface</b><br>Input mood string] -->|1. Submits current mood| B[<b>Client-Side Logic</b><br>app.js]
+    
+    subgraph Client App
+        B -->|Displays loading state & animations| B
+        B -->|Formats prompt with system instructions| C[<b>API Request Handler</b>]
+    end
+
+    C -->|2. POST Request JSON payload| D[<b>OpenAI API</b><br>gpt-4o-mini]
+
+    subgraph AI Engine
+        D -->|Analyzes user sentiment| D1[Reverse Mood Selection]
+        D1 -->|Generates sarcastic roast| D2[Format Response as JSON]
+    end
+
+    D2 -->|3. Returns JSON: {roast, youtubeSearch}| E[<b>Client-Side Renderer</b>]
+
+    subgraph DOM Updates
+        E -->|Extracts roast| F[Update #roastText]
+        E -->|Encodes query| G[Generate YouTube Embed URL]
+        G -->|Injects iframe| H[Render #playerContainer]
+    end
+
+    H -->|4. Streams audio/video embed| I[<b>End User Experience</b>]
+```
 
 ### Project Demo
 # Video
