@@ -36,30 +36,29 @@ For Software:
 # Installation
 
 ```bash
-git clone <your-repository-link>
+git clone <https://github.com/thaniyaharis6-web/useless_project_temp.git>
 cd mood-opposite-music
 ```
 
 # Run
 
 ```bash
-npm start
+python app.py
 ```
 
-Or, for a plain HTML/CSS/JavaScript project, simply open `index.html` with Live Server in VS Code.
 
 ### Project Documentation
 For Software:
 
-# Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
+# Screenshots 
+<img width="1185" height="811" alt="Screenshot 2026-09-04 053753" src="https://github.com/user-attachments/assets/592ae964-64d2-400b-ac4b-5dcaa7dba024" />
+A bold, dark-themed mood-selection page for a Malayalam audio experience. Users choose a vibe—Angry, Hyper, Romantic, Sad, or Happy—or type a custom feeling, then click “Diagnose Me” to receive an opposite-vibe song and a playful roast.
 
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
+<img width="1066" height="850" alt="Screenshot 2026-09-04 053845" src="https://github.com/user-attachments/assets/6342575e-c796-426b-98aa-8baa583c9752" />
+The results screen presents the selected opposite-vibe audio track with a visual waveform, playback controls, and a themed “Sad Tape” label. Below it, humorous prescription notes deliver sarcastic commentary and let users cycle through multiple diagnoses or change their emotion.
 
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
+<img width="1075" height="857" alt="Screenshot 2026-09-04 053946" src="https://github.com/user-attachments/assets/4d744b22-28ab-4ec3-841c-f964e0398908" />
+This result screen turns a romantic mood into a contrasting “Pranaya Kaalam Acoustic” audio experience, complete with animated waveform-style playback controls. It also adds a playful roast about overthinking romance, with options to view more diagnoses or choose a different emotion.
 
 # Diagrams
 ![Workflow](Add your workflow/architecture diagram here)
