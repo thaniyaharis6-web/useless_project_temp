@@ -112,15 +112,20 @@ This result screen turns a romantic mood into a contrasting “Pranaya Kaalam Ac
 ### Project Demo
 # Video
 (https://drive.google.com/file/d/1lOtpdbxE3WmsW00BlKY05ZUfBcMjxbZb/view?usp=sharing)
+This video demonstrates the interface and workflow of The Anti-Vibe Jukebox (or mood-roasting web app):
+
+1.Analysis Screen: The app starts by displaying an animated loading state with sarcastic status checks ("Measuring toxicity levels in blood...", "Extracting optimal audio frequencies from Malayalam archives...", "Synthesizing personalized sarcastic diagnosis...").
+
+2.Audio Streaming & Roast Interface: Once processing completes, the dashboard displays:
+
+Now Streaming Audio: Plays a song specifically chosen to clash with the mood—in this case, "Vibrant Celebration Anthem" (Joyful Malayalam Audio) paired with a live audio visualizer effect and playback controls.
+
+Prescription Notes & Observations: Displays a sarcastic AI-generated quote ("Who gave you permission to be this cheerful? It makes the rest of us deeply uncomfortable.") along with options to cycle through additional diagnoses or change the emotion entirely.
 
 
-# Additional Demos
-[Add any extra demo materials/links]
 
 ## Team Contributions
-- [Name 1]: [Specific contributions]
-- [Name 2]: [Specific contributions]
-- [Name 3]: [Specific contributions]
+- DEVIKA G NAIR- partner in crime!
 
 ---
 Made with ❤️ at TinkerHub Useless Projects 
